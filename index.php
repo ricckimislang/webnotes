@@ -1,15 +1,28 @@
 <?php
 require 'functions.php';
+require __DIR__ . '/vendor/autoload.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-// dd($uri);
 
+$routes = [
+    '/' => 'controllers/index.php',
+    '/about' => 'controllers/about.php',
+    '/login' => 'controllers/login.php',
+];
 
-if ($uri === '/') {
-    require 'controllers/index.php';
-} else if ($uri === '/about') {
-    require 'controllers/about.php';
+function routeToController($uri, $routes)
+{
+    if (array_key_exists($uri, $routes)) {
+        require $routes[$uri];
+    } else {
+        abort(404);
+    }
 }
-else if ($uri === '/login') {
-    require 'controllers/login.php';
+function abort($code = 404)
+{
+    http_response_code($code);
+    require "views/'{$code}'.php";
+    die();
 }
+
+routeToController($uri, $routes);

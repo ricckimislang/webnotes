@@ -1,0 +1,13 @@
+{
+    "name": "webnotes/app",
+    "description": "A web notes application",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/"
+        }
+    },
+    "require": {
+        "php": ">=8.1"
+    }
+}
