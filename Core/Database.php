@@ -7,11 +7,11 @@ use PDOException;
 
 class Database
 {
-    private $host = 'localhost';
-    private $db_name = 'web-note';
-    private $username = 'root';
-    private $password = '';
-    private $conn;
+    protected $host = 'localhost';
+    protected $db_name = 'web-note';
+    protected $username = 'root';
+    protected $password = '';
+    protected $conn;
 
     public function connect(): PDO
     {

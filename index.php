@@ -1,6 +1,7 @@
 <?php
-require 'functions.php';
+session_start();
 require __DIR__ . '/vendor/autoload.php';
+require 'functions.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
@@ -8,6 +9,7 @@ $routes = [
     '/' => 'controllers/index.php',
     '/about' => 'controllers/about.php',
     '/login' => 'controllers/login.php',
+    '/register' => 'controllers/register.php',
 ];
 
 function routeToController($uri, $routes)
