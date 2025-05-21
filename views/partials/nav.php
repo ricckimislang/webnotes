@@ -50,7 +50,7 @@
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                         </div>
                     </div>
-                    <a href="views/login/" class="ml-2 px-3 py-1 relative inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-700 text-white btn-sm px-3">Login</a>
+                    <a href="/login" class="ml-2 px-3 py-1 relative inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-700 text-white btn-sm px-3">Login</a>
                 </div>
             </div>
             <div class="-mr-2 flex md:hidden">

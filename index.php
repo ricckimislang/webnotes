@@ -10,3 +10,6 @@ if ($uri === '/') {
 } else if ($uri === '/about') {
     require 'controllers/about.php';
 }
+else if ($uri === '/login') {
+    require 'controllers/login.php';
+}
