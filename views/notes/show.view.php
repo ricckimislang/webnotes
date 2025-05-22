@@ -11,7 +11,7 @@
             <?php foreach ($notes as $note) : ?>
                 <li class="bg-white shadow rounded-lg p-4 border border-gray-200">
                     <h2 class="text-lg font-semibold">
-                        <a href="/note?id=<?= $note['id'] ?>"><?= $note['title'] ?></a>
+                        <a href="/note?id=<?= $note['description'] ?>"><?= $note['title'] ?></a>
                     </h2>
                 </li>
             <?php endforeach; ?>

@@ -2,6 +2,10 @@
 session_start();
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use Core\Database;
+
+$db = new Database();
+
 spl_autoload_register(function ($class) {
     $class = str_replace('\\', '/', $class);
     require base_path("{$class}.php");

@@ -1,5 +1,6 @@
 <?php
 
+
 function dd($value)
 {
     echo '<pre>';
@@ -53,4 +54,16 @@ function showToast()
     if ($html) {
         echo $html;
     }
+}
+function validateUser($key)
+{
+    return isset($_SESSION['user'][$key])? $_SESSION['user'][$key] : null;
+}
+
+
+function abort($code = 404)
+{
+    http_response_code($code);
+    require base_path('views/' . $code . '.php');
+    die();
 }

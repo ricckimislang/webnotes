@@ -54,13 +54,8 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
-
-                if (!empty($route['middleware'])) {
-                    $middleware = Middleware::MAP[$route['middleware']] ?? null;
-                    if ($middleware) {
-                        (new $middleware)->handle();
-                    }
-                }
+                Middleware::resolve($route['middleware']); // resolve the middleware if it exists and then execute the controller metho
+                
                 return require base_path($route['controller']);
             }
         }
