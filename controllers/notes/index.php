@@ -9,7 +9,7 @@ function getNotes($userId)
     global $db;
     $notes = [];
 
-    $stmt = $db->connect()->prepare("SELECT title, description FROM notes WHERE user_id = :id");
+    $stmt = $db->connect()->prepare("SELECT id, title, description FROM notes WHERE user_id = :id");
     $stmt->execute([':id' => $userId]);
     $row = $stmt->fetchALL();
 

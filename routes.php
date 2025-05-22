@@ -6,6 +6,8 @@ $router->get('/about', 'controllers/about.php')->only('auth');
 
 $router->get('/notes', 'controllers/notes/index.php')->only('auth');
 
+$router->get('/note', 'controllers/note/index.php')->only('auth');
+
 $router->get('/login', 'controllers/login.php')->only('guest');
 $router->post('/login', 'controllers/login.php');
 
