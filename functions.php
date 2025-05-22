@@ -45,29 +45,6 @@ function showToast() {
     }
     if ($html) {
         echo $html;
-        echo "<style>
-            .toast {
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                padding: 15px 25px;
-                border-radius: 5px;
-                color: white;
-                margin-bottom: 10px;
-                opacity: 0;
-                animation: fadeInOut 5s ease-in-out;
-            }
-            .toast-success { background-color: #4CAF50; }
-            .toast-error { background-color: #f44336; }
-            .toast-warning { background-color: #ff9800; }
-            .toast-info { background-color: #2196F3; }
-            @keyframes fadeInOut {
-                0% { opacity: 0; transform: translateX(100%); }
-                10% { opacity: 1; transform: translateX(0); }
-                90% { opacity: 1; transform: translateX(0); }
-                100% { opacity: 0; transform: translateX(100%); }
-            }
-        </style>";
     }
 }
 ?>

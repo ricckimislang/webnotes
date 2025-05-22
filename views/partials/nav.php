@@ -56,6 +56,8 @@ use Core\Authenticator;
                     </div>
                     <?php if (!Authenticator::isLoggedIn()): ?>
                         <a href="/login" class="ml-2 px-3 py-1 relative inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-700 text-white btn-sm px-3">Login</a>
+                    <?php else: ?>
+                        <a href="/logout" class="ml-2 px-3 py-1 relative inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-700 text-white btn-sm px-3">Logout</a>
                     <?php endif; ?>
                 </div>
             </div>
