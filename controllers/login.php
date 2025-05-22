@@ -40,4 +40,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require 'views/login/index.php';
+require base_path('views/login/index.php');

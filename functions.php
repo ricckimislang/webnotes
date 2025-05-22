@@ -6,6 +6,9 @@ function dd($value) {
     echo '</pre>';
     die();
 }
+function base_path($path = '') {
+    return __DIR__ . ($path ? '/' . ltrim($path, '/') : '');
+}
 
 function old($key, $attribute = '') {
     return $_SESSION[$key] = $attribute;

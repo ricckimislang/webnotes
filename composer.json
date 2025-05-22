@@ -2,12 +2,24 @@
     "name": "webnotes/app",
     "description": "A web notes application",
     "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Core\\": "Core/"
-        }
-    },
     "require": {
         "php": ">=8.1"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Controllers\\": "Controllers/",
+            "Models\\": "Models/"
+        },
+        "files": [
+            "functions.php"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
