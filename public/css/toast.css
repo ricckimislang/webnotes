@@ -8,6 +8,7 @@
     color: white;
     margin-bottom: 10px;
     opacity: 0;
+    pointer-events: none;
     animation: fadeInOut 1s ease-in-out;
 }
 .toast-success { background-color: #4CAF50; }

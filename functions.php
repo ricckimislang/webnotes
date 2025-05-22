@@ -1,27 +1,32 @@
 <?php
 
-function dd($value) {
+function dd($value)
+{
     echo '<pre>';
     var_dump($value);
     echo '</pre>';
     die();
 }
-function base_path($path = '') {
+function base_path($path = '')
+{
     return __DIR__ . ($path ? '/' . ltrim($path, '/') : '');
 }
 
-function old($key, $attribute = '') {
+function old($key, $attribute = '')
+{
     return $_SESSION[$key] = $attribute;
 }
 
-function flash($key, $message) {
+function flash($key, $message)
+{
     if (!isset($_SESSION['_flash'])) {
         $_SESSION['_flash'] = [];
     }
     $_SESSION['_flash'][$key] = $message;
 }
 
-function getFlash($key) {
+function getFlash($key)
+{
     if (isset($_SESSION['_flash'][$key])) {
         $message = $_SESSION['_flash'][$key];
         unset($_SESSION['_flash'][$key]);
@@ -30,11 +35,13 @@ function getFlash($key) {
     return null;
 }
 
-function isFlashed($key) {
+function isFlashed($key)
+{
     return isset($_SESSION['_flash'][$key]);
 }
 
-function showToast() {
+function showToast()
+{
     $types = ['success', 'error', 'warning', 'info'];
     $html = '';
     foreach ($types as $type) {
@@ -47,4 +54,3 @@ function showToast() {
         echo $html;
     }
 }
-?>
