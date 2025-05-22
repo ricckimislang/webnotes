@@ -11,7 +11,7 @@ $router->post('/login', 'controllers/login.php');
 
 $router->get('/logout', 'controllers/logout.php');
 
-$router->get('/register', 'controllers/register.php')->only('guest');
-$router->post('/register', 'controllers/register.php');
+$router->get('/register', 'controllers/registration/create.php')->only('guest');
+$router->post('/register', 'controllers/registration/create.php');
 
 return $router;
