@@ -25,7 +25,6 @@ class Router
     public function get($uri, $controller)
     {
         return $this->add($uri, $controller, 'GET');
-
     }
 
     public function post($uri, $controller)
@@ -53,6 +52,14 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+                // apply middleware
+                if ($route['middleware'] === 'guest') {
+                    if ($_SESSION['user'] ?? false) {
+                        flash('error', 'Already logged in');
+                        header('location: /');
+                        exit();
+                    }
+                }
                 return require base_path($route['controller']);
             }
         }

@@ -4,7 +4,7 @@
 $router->get('/', 'controllers/index.php');
 $router->get('/about', 'controllers/about.php');
 
-$router->get('/notes', 'controllers/notes/index.php');
+$router->get('/notes', 'controllers/notes/index.php')->only('auth');
 
 $router->get('/login', 'controllers/login.php');
 $router->post('/login', 'controllers/login.php');

@@ -33,7 +33,7 @@
                     Sign Up
                 </button>
             </div>
-            <p class="text-xs text-gray-500">Already have an account? <a href="/register" class="underline text-blue-700">Sign In Here!</a></p>
+            <p class="text-xs text-gray-500">Already have an account? <a href="/login" class="underline text-blue-700">Sign In Here!</a></p>
         </form>
     </div>
 </div>
