@@ -1,6 +1,8 @@
 <?php
 
 namespace Core;
+use Core\Middleware\Authonly;
+use Core\Middleware\Guestonly;
 
 class Router
 {
@@ -53,12 +55,11 @@ class Router
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
                 // apply middleware
-                if ($route['middleware'] === 'guest') {
-                    if ($_SESSION['user'] ?? false) {
-                        flash('error', 'Already logged in');
-                        header('location: /');
-                        exit();
-                    }
+                if ($route['middleware'] == 'guest') {
+                    (new Guestonly)->handle();
+                }
+                if ($route['middleware'] == 'auth') {
+                    (new Authonly)->handle();
                 }
                 return require base_path($route['controller']);
             }
