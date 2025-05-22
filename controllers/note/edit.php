@@ -1,44 +1,44 @@
 <?php
+
+declare(strict_types=1);
+
+use Core\Database;
+
 $heading = '';
+$db = new Database();
+$conn = $db->connect();
 
 $userId = validateUser('user_id');
-$noteId = $_GET['note_id'] ?? null;
+$noteId = filter_input(INPUT_GET, 'note_id', FILTER_VALIDATE_INT);
 
-function getNote($userId, $noteId)
-{
-    try {
-        global $db;
-
-        $stmt = $db->connect()->prepare("SELECT id, title, description FROM notes WHERE user_id = :user_id AND id = :note_id");
-        $stmt->execute([':user_id' => $userId, ':note_id' => $noteId]);
-        $row = $stmt->fetch();
-
-        if (empty($row)) {
-            return false; // note not found or user doesn't have access to the note
-        }
-        return $row;
-    } catch (Exception $e) {
-        throw new Exception($e->getMessage());
-    }
+if (!$userId) {
+    flash('error', 'You must be logged in to edit notes.');
+    header('Location: /login');
+    exit();
 }
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    try {
-        if (!$userId) {
-            header('location: /notes');
-            exit();
-        }
-        $note = getNote($userId, $noteId);
+if (!$noteId) {
+    flash('error', 'Invalid note ID.');
+    header('Location: /notes');
+    exit();
+}
 
-        if (!$note) {
-            flash('error', 'Note not found.');
-            header('Location: /notes');
-            exit();
-        }
-        $heading = $note['title'];
-    } catch (Exception $e) {
-        echo $e->getMessage();
+try {
+    $stmt = $conn->prepare("SELECT id, title, description FROM notes WHERE user_id = :user_id AND id = :note_id");
+    $stmt->execute([':user_id' => $userId, ':note_id' => $noteId]);
+    $note = $stmt->fetch();
+
+    if (!$note) {
+        flash('error', 'Note not found or you do not have permission to edit it.');
+        header('Location: /notes');
+        exit();
     }
+
+    $heading = $note['title'];
+} catch (Exception $e) {
+    flash('error', 'An error occurred while retrieving the note.');
+    header('Location: /notes');
+    exit();
 }
 
 require base_path('views/note/edit.view.php');

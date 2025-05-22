@@ -19,11 +19,11 @@ class Validator
         $length = strlen($value);
 
         if ($length < $min) {
-            throw new \Exception("The $fieldName must be at least $min characters.");
+            return false;
         }
 
         if ($length > $max) {
-            throw new \Exception("The $fieldName must be less than $max characters.");
+            return false;
         }
 
         return $value;
