@@ -1,6 +1,6 @@
 <?php
 
-$heading = 'Notes';
+$heading = 'Home';
 
 
 require base_path('views/index.view.php');

@@ -54,4 +54,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require base_path('views/register.view.php');
+require base_path('views/registration/create.view.php');

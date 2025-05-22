@@ -12,8 +12,9 @@ use Core\Authenticator;
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="/" class="rounded-md <?= $heading  === '' ? 'bg-gray-500 hover:bg-gray-700' : '' ?>  px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
-                        <a href="/about" class="rounded-md <?= $heading === 'About' ? 'bg-gray-500 hover:bg-gray-700' : '' ?> px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
+                        <a href="/" class="rounded-md <?= $heading  === 'Home' ? 'bg-gray-500 hover:bg-gray-700' : '' ?>  px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
+                        <a href="/notes" class="rounded-md <?= $heading === 'Notes' ? 'bg-gray-500 hover:bg-gray-700' : '' ?> px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white">Notes</a>
+                        <a href="/about" class="rounded-md <?= $heading === 'About' ? 'bg-gray-500 hover:bg-gray-700' : '' ?> px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white">About</a>
                     </div>
                 </div>
             </div>
