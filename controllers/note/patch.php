@@ -21,7 +21,7 @@ if (!$userId) {
 
 if (!$noteId) {
     flash('error', 'Invalid note ID.');
-    header('Location: /notes');
+    header('Location: /note?note_id=' . $noteId);
     exit();
 }
 
@@ -32,7 +32,7 @@ try {
     
     if (!$stmt->fetch()) {
         flash('error', 'Note not found or you do not have permission to edit it.');
-        header('Location: /notes');
+        header('Location: /note?note_id=$id');
         exit();
     }
 
@@ -55,7 +55,7 @@ try {
 
     flash('success', 'Note updated successfully.');
     unset($_SESSION['old_description']);
-    header('Location: /notes');
+    header('Location: /note?note_id=' . $noteId);
     exit();
 } catch (Exception $e) {
     flash('error', 'An error occurred while updating the note.');
