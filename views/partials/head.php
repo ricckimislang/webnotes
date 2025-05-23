@@ -20,5 +20,5 @@
 </head>
 
 
-<body class="">
+<body>
     <div class="min-h-full">

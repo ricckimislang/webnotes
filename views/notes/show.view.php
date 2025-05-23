@@ -6,8 +6,8 @@
 
 <?php echo showToast(); ?>
 <main>
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <a href="/note/create" class="btn-sm bg-green-600 rounded-md px-2 py-1 text-white hover:bg-green-700">Add Note</a>
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-end">
+        <a href="/note/create" class="btn btn-sm btn-success rounded-md px-2 py-1 text-white hover:bg-green-700">Add Note</a>
     </div>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -23,12 +23,37 @@
                     </div>
 
                     <!-- Footer Section -->
-                    <div class="mt-6 pt-4 border-t border-gray-100 text-right">
-                        <a href="/note?note_id=<?php echo $note['id'] ?>" class="text-black-600 font-medium hover:underline hover:text-blue-600">
+                    <div class="flex justify-end items-center mt-6 pt-4 border-t border-gray-100 space-x-4">
+
+                        <label for="confirm-delete-<?= $note['id'] ?>" class="btn btn-error btn-xs text-white">Delete</label>
+
+                        <a href="/note?note_id=<?php echo $note['id'] ?>" class="btn btn-xs btn-info text-white font-medium">
                             View Details →
                         </a>
                     </div>
                 </div>
+
+                <!-- modal for delete -->
+                <input type="checkbox" id="confirm-delete-<?= $note['id'] ?>" class="modal-toggle" />
+                <div class="modal">
+                    <div class="modal-box">
+                        <h3 class="font-bold text-lg">Confirm Deletion</h3>
+                        <p class="py-4">Are you sure you want to delete this note?</p>
+
+                        <div class="modal-action">
+                            <!-- Cancel button -->
+                            <label for="confirm-delete-<?= $note['id'] ?>" class="btn">Cancel</label>
+
+                            <!-- Delete form -->
+                            <form method="POST" action="/note/destroy">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="note_id" value="<?= $note['id'] ?>">
+                                <button type="submit" class="btn btn-error text-white">Yes, Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             <?php endforeach; ?>
         </div>
     </div>

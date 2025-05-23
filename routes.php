@@ -14,6 +14,8 @@ $router->patch('/edit', 'controllers/note/patch.php')->only('auth');
 $router->get('/note/create', 'controllers/note/create.php')->only('auth');
 $router->post('/note/create', 'controllers/note/create.php')->only('auth');
 
+$router->delete('/note/destroy', 'controllers/note/destroy.php')->only('auth');
+
 $router->get('/login', 'controllers/login.php')->only('guest');
 $router->post('/login', 'controllers/login.php');
 
