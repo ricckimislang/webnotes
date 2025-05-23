@@ -9,7 +9,10 @@ $router->get('/notes', 'controllers/notes/index.php')->only('auth');
 $router->get('/note', 'controllers/note/index.php')->only('auth');
 
 $router->get('/edit', 'controllers/note/edit.php')->only('auth');
-$router->post('/edit', 'controllers/note/patch.php')->only('auth');
+$router->patch('/edit', 'controllers/note/patch.php')->only('auth');
+
+$router->get('/note/create', 'controllers/note/create.php')->only('auth');
+$router->post('/note/create', 'controllers/note/create.php')->only('auth');
 
 $router->get('/login', 'controllers/login.php')->only('guest');
 $router->post('/login', 'controllers/login.php');

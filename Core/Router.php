@@ -47,15 +47,19 @@ class Router
     public function only($key)
     {
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
-        // dd($this->routes);
     }
 
     public function route($uri, $method)
     {
+        // Check for method spoofing
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method'])) {
+            $method = strtoupper($_POST['_method']);
+        }
+
         foreach ($this->routes as $route) {
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
                 Middleware::resolve($route['middleware']); // resolve the middleware if it exists and then execute the controller metho
-                
+
                 return require base_path($route['controller']);
             }
         }

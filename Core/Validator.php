@@ -19,10 +19,12 @@ class Validator
         $length = strlen($value);
 
         if ($length < $min) {
+            flash('error', "The $fieldName must be at least $min characters.");
             return false;
         }
 
         if ($length > $max) {
+            flash('error', "The $fieldName must be less than $max characters.");
             return false;
         }
 

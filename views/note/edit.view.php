@@ -4,14 +4,12 @@
 
 <?php require base_path('views/partials/banner.php');  ?>
 
+<?php echo showToast(); ?>
 <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <?php showToast(); ?>
         <form id="editNote" action="/edit" method="POST" class="space-y-6">
             <input type="hidden" name="note_id" value="<?= (int)$note['id']; ?>">
             <input type="hidden" name="_method" value="PATCH">
-            <input type="hidden" name="_csrf" value="<?= $_SESSION['csrf_token'] ?? ''; ?>">
-            
             <div class="space-y-2">
                 <label for="description" class="block text-sm font-medium text-gray-700">Note Description</label>
                 <textarea 
